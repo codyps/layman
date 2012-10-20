@@ -152,6 +152,14 @@ class Overlay(object):
             raise Exception('Overlay from_xml(), "' + self.name + \
                 '" is missing a "source" entry!')
 
+        _branch = xml.find('branch')
+        if _branch != None:
+            self.branch = encode(_branch.text.strip())
+        elif 'branch' in xml.attrib:
+            self.branch = encode(xml.attrib['branch'])
+        else:
+            self.branch = ''
+
         self.sources = [create_overlay_source(e) for e in _sources]
 
         _subpath = xml.find('subpath')

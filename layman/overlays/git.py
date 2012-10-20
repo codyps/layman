@@ -43,6 +43,7 @@ class GitOverlay(OverlaySource):
         super(GitOverlay, self).__init__(parent, config,
             _location, ignore)
         self.subpath = None
+        self.branch = parent.branch
 
     def add(self, base):
         '''Add overlay.'''
@@ -68,6 +69,9 @@ class GitOverlay(OverlaySource):
             args.append('-q')
         if len(cfg_opts):
             args.append(cfg_opts)
+        if len(self.branch):
+            args.append('-b')
+            args.append(self.branch)
         args.append(fix_git_source(self.src))
         args.append(target)
         success = False
