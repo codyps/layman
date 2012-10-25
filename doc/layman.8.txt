@@ -49,6 +49,8 @@ an overlay.
 To ensure the security of your system you MUST read the source of
 the ebuild you are about to install.
 
+This revision supports the fetching from branches of git trees.
+
 
 OPTIONS
 -------
